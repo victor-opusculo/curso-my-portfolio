@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+data/my-portfolio.sqlite3
+
+data/uploads/media/**/*
+!data/uploads/media/.gitkeep
