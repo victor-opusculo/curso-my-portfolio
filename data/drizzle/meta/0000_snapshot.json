@@ -1,0 +1,1389 @@
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "prevId": "",
+  "version": "6",
+  "dialect": "sqlite",
+  "tables": {
+    "settings": {
+      "name": "settings",
+      "columns": {
+        "key": {
+          "autoincrement": false,
+          "name": "key",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "value": {
+          "autoincrement": false,
+          "name": "value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "media": {
+      "name": "media",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "title": {
+          "autoincrement": false,
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mime_type": {
+          "autoincrement": false,
+          "name": "mime_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "file_extension": {
+          "autoincrement": false,
+          "name": "file_extension",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "media_fts": {
+      "name": "media_fts",
+      "columns": {
+        "title": {
+          "autoincrement": false,
+          "name": "title",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "media_fts": {
+          "autoincrement": false,
+          "name": "media_fts",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rank": {
+          "autoincrement": false,
+          "name": "rank",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "media_fts_data": {
+      "name": "media_fts_data",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "block": {
+          "autoincrement": false,
+          "name": "block",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "media_fts_idx": {
+      "name": "media_fts_idx",
+      "columns": {
+        "segid": {
+          "autoincrement": false,
+          "name": "segid",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "term": {
+          "autoincrement": false,
+          "name": "term",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pgno": {
+          "autoincrement": false,
+          "name": "pgno",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "media_fts_idx_segid_term_pk": {
+          "columns": [
+            "segid",
+            "term"
+          ],
+          "name": "media_fts_idx_segid_term_pk"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "media_fts_docsize": {
+      "name": "media_fts_docsize",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "sz": {
+          "autoincrement": false,
+          "name": "sz",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "media_fts_config": {
+      "name": "media_fts_config",
+      "columns": {
+        "k": {
+          "autoincrement": false,
+          "name": "k",
+          "type": "numeric",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "v": {
+          "autoincrement": false,
+          "name": "v",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects": {
+      "name": "projects",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "title": {
+          "autoincrement": false,
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "autoincrement": false,
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "links_json": {
+          "default": "'[]'",
+          "autoincrement": false,
+          "name": "links_json",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "logo_media_id": {
+          "autoincrement": false,
+          "name": "logo_media_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "projects_logo_media_id_media_id_fk": {
+          "name": "projects_logo_media_id_media_id_fk",
+          "tableFrom": "projects",
+          "tableTo": "media",
+          "columnsFrom": [
+            "logo_media_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects_fts": {
+      "name": "projects_fts",
+      "columns": {
+        "title": {
+          "autoincrement": false,
+          "name": "title",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "autoincrement": false,
+          "name": "description",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "projects_fts": {
+          "autoincrement": false,
+          "name": "projects_fts",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rank": {
+          "autoincrement": false,
+          "name": "rank",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects_fts_data": {
+      "name": "projects_fts_data",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "block": {
+          "autoincrement": false,
+          "name": "block",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects_fts_idx": {
+      "name": "projects_fts_idx",
+      "columns": {
+        "segid": {
+          "autoincrement": false,
+          "name": "segid",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "term": {
+          "autoincrement": false,
+          "name": "term",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pgno": {
+          "autoincrement": false,
+          "name": "pgno",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "projects_fts_idx_segid_term_pk": {
+          "columns": [
+            "segid",
+            "term"
+          ],
+          "name": "projects_fts_idx_segid_term_pk"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects_fts_docsize": {
+      "name": "projects_fts_docsize",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "sz": {
+          "autoincrement": false,
+          "name": "sz",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects_fts_config": {
+      "name": "projects_fts_config",
+      "columns": {
+        "k": {
+          "autoincrement": false,
+          "name": "k",
+          "type": "numeric",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "v": {
+          "autoincrement": false,
+          "name": "v",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects_tags": {
+      "name": "projects_tags",
+      "columns": {
+        "proj_id": {
+          "autoincrement": false,
+          "name": "proj_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tag": {
+          "autoincrement": false,
+          "name": "tag",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "projects_tags_proj_id_tag_pk": {
+          "columns": [
+            "proj_id",
+            "tag"
+          ],
+          "name": "projects_tags_proj_id_tag_pk"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "projects_tags_proj_id_projects_id_fk": {
+          "name": "projects_tags_proj_id_projects_id_fk",
+          "tableFrom": "projects_tags",
+          "tableTo": "projects",
+          "columnsFrom": [
+            "proj_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects_tags_fts": {
+      "name": "projects_tags_fts",
+      "columns": {
+        "tags": {
+          "autoincrement": false,
+          "name": "tags",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "projects_tags_fts": {
+          "autoincrement": false,
+          "name": "projects_tags_fts",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rank": {
+          "autoincrement": false,
+          "name": "rank",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects_tags_fts_data": {
+      "name": "projects_tags_fts_data",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "block": {
+          "autoincrement": false,
+          "name": "block",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects_tags_fts_idx": {
+      "name": "projects_tags_fts_idx",
+      "columns": {
+        "segid": {
+          "autoincrement": false,
+          "name": "segid",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "term": {
+          "autoincrement": false,
+          "name": "term",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pgno": {
+          "autoincrement": false,
+          "name": "pgno",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "projects_tags_fts_idx_segid_term_pk": {
+          "columns": [
+            "segid",
+            "term"
+          ],
+          "name": "projects_tags_fts_idx_segid_term_pk"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects_tags_fts_content": {
+      "name": "projects_tags_fts_content",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "c0": {
+          "autoincrement": false,
+          "name": "c0",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects_tags_fts_docsize": {
+      "name": "projects_tags_fts_docsize",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "sz": {
+          "autoincrement": false,
+          "name": "sz",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects_tags_fts_config": {
+      "name": "projects_tags_fts_config",
+      "columns": {
+        "k": {
+          "autoincrement": false,
+          "name": "k",
+          "type": "numeric",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "v": {
+          "autoincrement": false,
+          "name": "v",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects_attachs": {
+      "name": "projects_attachs",
+      "columns": {
+        "proj_id": {
+          "autoincrement": false,
+          "name": "proj_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "media_id": {
+          "autoincrement": false,
+          "name": "media_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_gallery": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "is_gallery",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "projects_attachs_proj_id_media_id_pk": {
+          "columns": [
+            "proj_id",
+            "media_id"
+          ],
+          "name": "projects_attachs_proj_id_media_id_pk"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "projects_attachs_media_id_media_id_fk": {
+          "name": "projects_attachs_media_id_media_id_fk",
+          "tableFrom": "projects_attachs",
+          "tableTo": "media",
+          "columnsFrom": [
+            "media_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "projects_attachs_proj_id_projects_id_fk": {
+          "name": "projects_attachs_proj_id_projects_id_fk",
+          "tableFrom": "projects_attachs",
+          "tableTo": "projects",
+          "columnsFrom": [
+            "proj_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "tools": {
+      "name": "tools",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "title": {
+          "autoincrement": false,
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "autoincrement": false,
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "logo_media_id": {
+          "autoincrement": false,
+          "name": "logo_media_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {
+        "tools_logo_media_id_media_id_fk": {
+          "name": "tools_logo_media_id_media_id_fk",
+          "tableFrom": "tools",
+          "tableTo": "media",
+          "columnsFrom": [
+            "logo_media_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "projects_tools": {
+      "name": "projects_tools",
+      "columns": {
+        "proj_id": {
+          "autoincrement": false,
+          "name": "proj_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tool_id": {
+          "autoincrement": false,
+          "name": "tool_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "projects_tools_proj_id_tool_id_pk": {
+          "columns": [
+            "proj_id",
+            "tool_id"
+          ],
+          "name": "projects_tools_proj_id_tool_id_pk"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "projects_tools_tool_id_tools_id_fk": {
+          "name": "projects_tools_tool_id_tools_id_fk",
+          "tableFrom": "projects_tools",
+          "tableTo": "tools",
+          "columnsFrom": [
+            "tool_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "projects_tools_proj_id_projects_id_fk": {
+          "name": "projects_tools_proj_id_projects_id_fk",
+          "tableFrom": "projects_tools",
+          "tableTo": "projects",
+          "columnsFrom": [
+            "proj_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "tools_fts": {
+      "name": "tools_fts",
+      "columns": {
+        "title": {
+          "autoincrement": false,
+          "name": "title",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "autoincrement": false,
+          "name": "description",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tools_fts": {
+          "autoincrement": false,
+          "name": "tools_fts",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rank": {
+          "autoincrement": false,
+          "name": "rank",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "tools_fts_data": {
+      "name": "tools_fts_data",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "block": {
+          "autoincrement": false,
+          "name": "block",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "tools_fts_idx": {
+      "name": "tools_fts_idx",
+      "columns": {
+        "segid": {
+          "autoincrement": false,
+          "name": "segid",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "term": {
+          "autoincrement": false,
+          "name": "term",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pgno": {
+          "autoincrement": false,
+          "name": "pgno",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "tools_fts_idx_segid_term_pk": {
+          "columns": [
+            "segid",
+            "term"
+          ],
+          "name": "tools_fts_idx_segid_term_pk"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "tools_fts_docsize": {
+      "name": "tools_fts_docsize",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "sz": {
+          "autoincrement": false,
+          "name": "sz",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "tools_fts_config": {
+      "name": "tools_fts_config",
+      "columns": {
+        "k": {
+          "autoincrement": false,
+          "name": "k",
+          "type": "numeric",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "v": {
+          "autoincrement": false,
+          "name": "v",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "blog_posts": {
+      "name": "blog_posts",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "title": {
+          "autoincrement": false,
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "content": {
+          "autoincrement": false,
+          "name": "content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "enable_html": {
+          "default": 0,
+          "autoincrement": false,
+          "name": "enable_html",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "is_visible": {
+          "default": 1,
+          "autoincrement": false,
+          "name": "is_visible",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "published_at_utc": {
+          "autoincrement": false,
+          "name": "published_at_utc",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at_utc": {
+          "autoincrement": false,
+          "name": "updated_at_utc",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "blog_posts_tags": {
+      "name": "blog_posts_tags",
+      "columns": {
+        "post_id": {
+          "autoincrement": false,
+          "name": "post_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tag": {
+          "autoincrement": false,
+          "name": "tag",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "compositePrimaryKeys": {
+        "blog_posts_tags_post_id_tag_pk": {
+          "columns": [
+            "post_id",
+            "tag"
+          ],
+          "name": "blog_posts_tags_post_id_tag_pk"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "blog_posts_tags_post_id_blog_posts_id_fk": {
+          "name": "blog_posts_tags_post_id_blog_posts_id_fk",
+          "tableFrom": "blog_posts_tags",
+          "tableTo": "blog_posts",
+          "columnsFrom": [
+            "post_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "blog_posts_fts": {
+      "name": "blog_posts_fts",
+      "columns": {
+        "title": {
+          "autoincrement": false,
+          "name": "title",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "content": {
+          "autoincrement": false,
+          "name": "content",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "blog_posts_fts": {
+          "autoincrement": false,
+          "name": "blog_posts_fts",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rank": {
+          "autoincrement": false,
+          "name": "rank",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "blog_posts_fts_data": {
+      "name": "blog_posts_fts_data",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "block": {
+          "autoincrement": false,
+          "name": "block",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "blog_posts_fts_idx": {
+      "name": "blog_posts_fts_idx",
+      "columns": {
+        "segid": {
+          "autoincrement": false,
+          "name": "segid",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "term": {
+          "autoincrement": false,
+          "name": "term",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pgno": {
+          "autoincrement": false,
+          "name": "pgno",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "blog_posts_fts_idx_segid_term_pk": {
+          "columns": [
+            "segid",
+            "term"
+          ],
+          "name": "blog_posts_fts_idx_segid_term_pk"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "blog_posts_fts_docsize": {
+      "name": "blog_posts_fts_docsize",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "sz": {
+          "autoincrement": false,
+          "name": "sz",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "blog_posts_fts_config": {
+      "name": "blog_posts_fts_config",
+      "columns": {
+        "k": {
+          "autoincrement": false,
+          "name": "k",
+          "type": "numeric",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "v": {
+          "autoincrement": false,
+          "name": "v",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "blog_posts_tags_fts": {
+      "name": "blog_posts_tags_fts",
+      "columns": {
+        "tags": {
+          "autoincrement": false,
+          "name": "tags",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "blog_posts_tags_fts": {
+          "autoincrement": false,
+          "name": "blog_posts_tags_fts",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rank": {
+          "autoincrement": false,
+          "name": "rank",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "blog_posts_tags_fts_data": {
+      "name": "blog_posts_tags_fts_data",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "block": {
+          "autoincrement": false,
+          "name": "block",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "blog_posts_tags_fts_idx": {
+      "name": "blog_posts_tags_fts_idx",
+      "columns": {
+        "segid": {
+          "autoincrement": false,
+          "name": "segid",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "term": {
+          "autoincrement": false,
+          "name": "term",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pgno": {
+          "autoincrement": false,
+          "name": "pgno",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {
+        "blog_posts_tags_fts_idx_segid_term_pk": {
+          "columns": [
+            "segid",
+            "term"
+          ],
+          "name": "blog_posts_tags_fts_idx_segid_term_pk"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "blog_posts_tags_fts_content": {
+      "name": "blog_posts_tags_fts_content",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "c0": {
+          "autoincrement": false,
+          "name": "c0",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "blog_posts_tags_fts_docsize": {
+      "name": "blog_posts_tags_fts_docsize",
+      "columns": {
+        "id": {
+          "autoincrement": false,
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": false
+        },
+        "sz": {
+          "autoincrement": false,
+          "name": "sz",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "blog_posts_tags_fts_config": {
+      "name": "blog_posts_tags_fts_config",
+      "columns": {
+        "k": {
+          "autoincrement": false,
+          "name": "k",
+          "type": "numeric",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "v": {
+          "autoincrement": false,
+          "name": "v",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "compositePrimaryKeys": {},
+      "indexes": {},
+      "foreignKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
