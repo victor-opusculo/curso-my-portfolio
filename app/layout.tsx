@@ -4,6 +4,10 @@ import "./globals.css";
 import { cookies } from "next/headers";
 import Image from "next/image";
 
+import NavBar from "@/components/layout/NavBar";
+import NavBarItem from "@/components/layout/NavBarItem";
+import DarkModeToggler from "@/components/layout/DarkModeToggler";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,10 +32,13 @@ export default async function RootLayout({
   const cookieStore = await cookies();
   const darkMode = cookieStore.get('theme')?.value === 'dark' ? 'dark' : '';
 
+  const email = 'exemplo@exemplo.com';
+  const telephone = '+5511999999999';
+
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased ${darkMode}`}
     >
       <body className="min-h-full flex flex-col">
         <div id="growableToFooter">
@@ -45,13 +52,30 @@ export default async function RootLayout({
               loading="eager"
             />
             <div className="absolute bottom-0 w-full">
-              NavBar
+              <NavBar>
+                <span className="flex flex-row">
+                  <NavBarItem href="/" label="Home" />
+                  <NavBarItem href="/blog" label="Blog" />
+                  <NavBarItem href="/projects" label="Projetos" />
+                  <NavBarItem href="/tools" label="Ferramentas" />
+                </span>
+                <DarkModeToggler />
+              </NavBar>
             </div>
           </header>
           <main>
             {children}
           </main>
         </div>
+        <footer className="pl-4 bg-neutral-300 dark:bg-neutral-700 text-center p-4">
+          <p className="font-bold text-lg">Meu portfólio</p>
+          <p>
+            <a href="mailto:teste@example.com" className="hover:underline">{email}</a>
+          </p>
+          <p>
+            <a href={`https://wa.me/${telephone.replace(/\D+/g, '')}`} className="hover:underline">{telephone}</a>
+          </p>
+        </footer>
       </body>
     </html>
   );
