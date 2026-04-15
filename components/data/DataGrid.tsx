@@ -50,8 +50,8 @@ export default function DataGrid(props: DataGridProperties)
                         <tr key={index}>
                             {Object.keys(row).map( (header, hindex) => columnsToHide.includes(header) ? undefined : (<td data-th={header} key={hindex} className={`break-words ${props.customStyle?.td}`}>{row[header]}</td>))}
                             {props.detailsUrl && <td data-th="Detalhes" className={props.customStyle?.td}><Link href={replaceParamInUrl(rudButtonsParameterName, row, props.detailsUrl)}>{detailsIcon}</Link></td>}
-                            {props.editUrl && <td data-th="Editar" className={props.customStyle?.td}><Link href={replaceParamInUrl(rudButtonsParameterName, row, props.editUrl)}>{detailsIcon}</Link></td>}
-                            {props.deleteUrl && <td data-th="Excluir" className={props.customStyle?.td}><Link href={replaceParamInUrl(rudButtonsParameterName, row, props.deleteUrl)}>{detailsIcon}</Link></td>}
+                            {props.editUrl && <td data-th="Editar" className={props.customStyle?.td}><Link href={replaceParamInUrl(rudButtonsParameterName, row, props.editUrl)}>{editIcon}</Link></td>}
+                            {props.deleteUrl && <td data-th="Excluir" className={props.customStyle?.td}><Link href={replaceParamInUrl(rudButtonsParameterName, row, props.deleteUrl)}>{deleteIcon}</Link></td>}
                         </tr>
                     )}
                 </tbody>
