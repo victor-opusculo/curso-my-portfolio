@@ -22,8 +22,11 @@ export async function getTagsUsedInPosts(ids: number[]) {
 }
 
 export async function setTagsForPost(id: number, tags: string[]) {
-    if (tags.length < 1) 
+    if (tags.length < 1)
+    {
+        await db.delete(blogPostsTags).where(eq(blogPostsTags.postId, id));
         return;
+    }
 
     const newRows: (typeof blogPostsTags.$inferSelect)[] = tags.map(t => ({
         postId: id,
