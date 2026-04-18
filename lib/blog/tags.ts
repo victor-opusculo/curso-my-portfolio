@@ -12,6 +12,15 @@ export async function getAllTagsUsed() {
     return allTags.map(tobj => tobj.tag);
 }
 
+export async function getTagsUsedInPost(id: number) : Promise<string[]> {
+    const rows = await db
+        .select({ tag: blogPostsTags.tag })
+        .from(blogPostsTags)
+        .where(eq(blogPostsTags.postId, id));
+
+    return rows.map(r => r.tag);
+}
+
 export async function getTagsUsedInPosts(ids: number[]) {
     const rows = await db
         .select({ postId: blogPostsTags.postId, tag: blogPostsTags.tag })
