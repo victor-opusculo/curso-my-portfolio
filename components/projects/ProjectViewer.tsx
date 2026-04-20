@@ -90,6 +90,9 @@ export default async function ProjectViewer(props: ProjectViewerProps) {
                                             ? `/api/media/${tool.logoMediaId}`
                                             : '/nopic.png'
                                     }
+                                    alt={tool.title}
+                                    title={tool.title}
+                                    className="absolute top-0 bottom-0 left-0 right-0 m-auto p-1"
                                 />
                             </a>
                         ))}
