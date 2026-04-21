@@ -7,6 +7,7 @@ import Image from "next/image";
 import NavBar from "@/components/layout/NavBar";
 import NavBarItem from "@/components/layout/NavBarItem";
 import DarkModeToggler from "@/components/layout/DarkModeToggler";
+import { getEmail, getTelephone } from "@/lib/settings/contact";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,8 +33,8 @@ export default async function RootLayout({
   const cookieStore = await cookies();
   const darkMode = cookieStore.get('theme')?.value === 'dark' ? 'dark' : '';
 
-  const email = 'exemplo@exemplo.com';
-  const telephone = '+5511999999999';
+  const email = await getEmail();
+  const telephone = await getTelephone();
 
   return (
     <html
@@ -70,7 +71,7 @@ export default async function RootLayout({
         <footer className="pl-4 bg-neutral-300 dark:bg-neutral-700 text-center p-4">
           <p className="font-bold text-lg">Meu portfólio</p>
           <p>
-            <a href="mailto:teste@example.com" className="hover:underline">{email}</a>
+            <a href={`mailto:${email}`} className="hover:underline">{email}</a>
           </p>
           <p>
             <a href={`https://wa.me/${telephone.replace(/\D+/g, '')}`} className="hover:underline">{telephone}</a>
