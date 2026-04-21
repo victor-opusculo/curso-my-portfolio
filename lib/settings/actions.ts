@@ -99,7 +99,7 @@ export async function saveHomePageInfos(
         return { message: 'Nenhum dado alterado.' }
 }
 
-export async function saveAdminPassord(
+export async function saveAdminPassword(
     formState: AdminPasswordFormState,
     formData: FormData
 ) : Promise<AdminPasswordFormState> {
