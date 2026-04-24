@@ -51,7 +51,7 @@ export default function Paginator(props: PaginatorProperties)
             {props.pageNumber + 1 < Math.ceil(props.totalItems / props.numberResultsOnPage) + 1 && <li><Link href={{pathname: props.basePath, query: pagNum(props.pageNumber + 1)}}>{props.pageNumber + 1}</Link></li>}
             {props.pageNumber + 2 < Math.ceil(props.totalItems / props.numberResultsOnPage) + 1 && <li><Link href={{pathname: props.basePath, query: pagNum(props.pageNumber + 2)}}>{props.pageNumber + 2}</Link></li>}
         
-            {(props.pageNumber < Math.ceil(props.totalItems / props.numberResultsOnPage) && <>
+            {((props.pageNumber < Math.ceil(props.totalItems / props.numberResultsOnPage) - 2) && <>
                 <li>...</li>
                 <li><Link href={{pathname: props.basePath, query: pagNum(Math.ceil(props.totalItems / props.numberResultsOnPage))}}>{Math.ceil(props.totalItems / props.numberResultsOnPage)}</Link></li>
             </>)}

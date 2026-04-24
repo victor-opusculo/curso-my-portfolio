@@ -1,0 +1,1 @@
+https://developer.mozilla.org/pt-BR/docs/Learn_web_development/Extensions/Async_JS/Promises
